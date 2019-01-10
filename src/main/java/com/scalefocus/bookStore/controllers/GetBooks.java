@@ -19,7 +19,7 @@ public class GetBooks extends HttpServlet {
 		try {
 			request.setAttribute("Books", booksService.getBookById(id));
 		} catch (final Exception e) {
-			e.printStackTrace();
+			throw new ServletException("Book not FOUND!");
 		}
 		final RequestDispatcher requestDispatcher = request.getRequestDispatcher("ShowBooks.jsp");
 
