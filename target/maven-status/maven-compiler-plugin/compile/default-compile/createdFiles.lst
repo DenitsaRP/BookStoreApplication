@@ -1,0 +1,8 @@
+com\scalefocus\bookStore\daos\AuthorDao.class
+com\scalefocus\bookStore\daos\AbstractDao.class
+com\scalefocus\bookStore\services\DatabaseService.class
+com\scalefocus\bookStore\models\Books.class
+com\scalefocus\bookStore\controllers\GetBooks.class
+com\scalefocus\bookStore\daos\BooksDao.class
+com\scalefocus\bookStore\services\BooksService.class
+com\scalefocus\bookStore\models\Author.class
