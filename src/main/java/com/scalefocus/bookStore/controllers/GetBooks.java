@@ -8,14 +8,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.scalefocus.bookStore.services.BooksService;
+import com.scalefocus.bookStore.services.IBookService;
+import com.scalefocus.bookStore.services.impl.BooksService;
 
 public class GetBooks extends HttpServlet {
 
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		final int id = Integer.parseInt(request.getParameter("id"));
-		final BooksService booksService = new BooksService();
+		final IBookService booksService = new BooksService();
 		try {
 			request.setAttribute("Books", booksService.getBookById(id));
 		} catch (final Exception e) {

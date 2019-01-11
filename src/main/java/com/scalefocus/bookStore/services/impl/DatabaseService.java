@@ -1,11 +1,13 @@
-package com.scalefocus.bookStore.services;
+package com.scalefocus.bookStore.services.impl;
 
 import java.sql.Connection;
 
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-public class DatabaseService {
+import com.scalefocus.bookStore.services.IDatabaseService;
+
+public class DatabaseService implements IDatabaseService {
 
 	public static Connection getDatabaseConnection() throws Exception {
 		final InitialContext initialContext = new InitialContext();

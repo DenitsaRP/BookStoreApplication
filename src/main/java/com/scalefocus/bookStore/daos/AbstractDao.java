@@ -2,7 +2,7 @@ package com.scalefocus.bookStore.daos;
 
 import java.sql.Connection;
 
-import com.scalefocus.bookStore.services.DatabaseService;
+import com.scalefocus.bookStore.services.impl.DatabaseService;
 
 public abstract class AbstractDao {
 
