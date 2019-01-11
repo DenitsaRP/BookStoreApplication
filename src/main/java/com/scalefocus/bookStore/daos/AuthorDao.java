@@ -4,17 +4,17 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 
 import com.scalefocus.bookStore.models.Author;
-import com.scalefocus.bookStore.services.DatabaseService;
 
 public class AuthorDao extends AbstractDao {
 
+	// TODO default constructor for obtaining connection when Dao is created
 	public Author getAuthor(Integer id) {
 
 		final Author author = new Author();
 
 		try {
-			final Connection connection = DatabaseService.getDatabaseConnection();
-			final ResultSet resultSet = connection.createStatement().executeQuery(
+
+			final ResultSet resultSet = getDatabaseConnection().createStatement().executeQuery(
 					"select * from bookstore.books join bookstore.author on b.authorId = a.Id where b.id= " + id);
 			if (resultSet.next()) {
 				author.setId(resultSet.getInt("id"));
@@ -29,11 +29,11 @@ public class AuthorDao extends AbstractDao {
 		return author;
 	}
 
-	public String getAuthorNameById(Integer id) throws Exception {
-		String authorName = "";
-		final Connection connection = DatabaseService.getDatabaseConnection();
-		final ResultSet resultSet = connection.createStatement()
-				.executeQuery("select name from author, where id =" + id);
+	public String getAuthorNameByBookId(Integer id) throws Exception {
+		String authorName = null;
+		final Connection connection = getDatabaseConnection();
+		final ResultSet resultSet = connection.createStatement().executeQuery(
+				"select author.name from author inner join books on author.id=books.authorId where books.id = " + id);
 		if (resultSet.next()) {
 			authorName = resultSet.getString("name");
 		}

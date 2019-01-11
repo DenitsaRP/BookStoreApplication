@@ -6,25 +6,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.scalefocus.bookStore.models.Books;
-import com.scalefocus.bookStore.services.DatabaseService;
 
 public class BooksDao extends AbstractDao {
 
 	public Books getBookById(int id) throws Exception {
 
 		final Books book = new Books();
-		final AuthorDao authorDao = AbstractDao.getDao(AuthorDao.class);
+		final AuthorDao authorDao = getAuthorDao();
 
 		try {
-			final Connection connection = DatabaseService.getDatabaseConnection();
-			final ResultSet resultSet = connection.createStatement()
-					.executeQuery("select * from books where books.authorId = " + id);
+			final Connection connection = getDatabaseConnection();
+			final ResultSet resultSet = connection.createStatement().executeQuery(
+					"select b.id, b.name, b.authorId, b.description, a.name  from books b join author a on b.authorId = a.Id where b.id= "
+							+ id);
 			if (resultSet.next()) {
 				book.setId(resultSet.getInt("id"));
 				book.setName(resultSet.getString("name"));
 				book.setAuthorId(resultSet.getInt("authorId"));
-				book.setAuthorName(resultSet.getString(authorDao.getAuthorNameById(id)));
 				book.setDescription(resultSet.getString("description"));
+				final String authorName = authorDao.getAuthorNameByBookId(id);
+				book.setAuthorName(authorName);
 			}
 
 		} catch (final Exception e) {
@@ -36,21 +37,36 @@ public class BooksDao extends AbstractDao {
 
 	public List<Books> getAllBooks() {
 		final List<Books> books = new ArrayList<Books>();
-		final Books book = new Books();
 
 		try {
-			final Connection connection = DatabaseService.getDatabaseConnection();
+			final Connection connection = getDatabaseConnection();
 			final ResultSet resultSet = connection.createStatement().executeQuery("select * from books");
 			while (resultSet.next()) {
+				final Books book = new Books();
 				book.setId(resultSet.getInt("id"));
 				book.setName(resultSet.getString("name"));
 				book.setAuthorId(resultSet.getInt("authorId"));
 				book.setDescription(resultSet.getString("description"));
+				book.setAuthorName(getAuthorDao().getAuthorNameByBookId(book.getId()));
 				books.add(book);
+
 			}
 		} catch (final Exception e) {
+
 			e.printStackTrace();
 		}
 		return books;
+	}
+
+	private AuthorDao getAuthorDao() throws Exception {
+		final AuthorDao authorDao = AbstractDao.getDao(AuthorDao.class);
+		return authorDao;
+	}
+
+	public void printAllBookData(List<Books> books) {
+		// System.out.println(books.stream().map(e ->
+		// e.toString()).collect(Collectors.toList()));
+		final List<Books> bookList = new ArrayList<Books>(books);
+		bookList.forEach((Books b) -> System.out.print(b));
 	}
 }
