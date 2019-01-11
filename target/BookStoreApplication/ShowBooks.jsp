@@ -1,8 +1,10 @@
+<%@page import="com.scalefocus.bookStore.services.IAuthorService"%>
+<%@page import="com.scalefocus.bookStore.services.impl.AuthorService"%>
+<%@page import="com.scalefocus.bookStore.services.impl.BooksService"%>
+<%@page import="com.scalefocus.bookStore.services.IBookService"%>
 <%@page import="com.scalefocus.bookStore.models.Authors"%>
-<%@page import="com.scalefocus.bookStore.services.AuthorService"%>
 <%@page import="java.io.IOException"%>
 <%@page import="java.util.List"%>
-<%@page import="com.scalefocus.bookStore.services.BooksService"%>
 <%@page import="com.scalefocus.bookStore.models.Books"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page import="java.util.ArrayList"%>
@@ -17,34 +19,32 @@
 		Books book = (Books) request.getAttribute("Books");
 		out.println(book + "</br>");
 
-		BooksService booksService = new BooksService();
+		IBookService booksService = new BooksService();
 		List<Books> books = booksService.getAllBooksInBookStore();
 		for (Books bookInList : books) {
 			out.println(bookInList + "</br>");
 		}
 
-		AuthorService authorService = new AuthorService();
+		IAuthorService authorService = new AuthorService();
 		List<Authors> authors = authorService.getAuthorsInBookstore();
 		for (Authors authorsInBookstore : authors) {
 			out.println(authorsInBookstore + "</br>");
 		}
 	%>
 	<!-- 	<table> -->
-	<!-- 		<tr> -->
-	<!-- 			<th>Books</th> -->
-	<!-- 		</tr> -->
-
-	<%-- 		<c:forEach items="${books}" var="book"> --%>
+	<%-- 		<c:forEach items="${authors}" var="author"> --%>
 	<!-- 			<tr> -->
-	<%-- 				<td>${book.id}</td> --%>
-	<%-- 				<td>${book.name}</td> --%>
-	<%-- 				<td>${book.authorId}</td> --%>
-	<%-- 				<td>${book.authorName}</td> --%>
-	<%-- 				<td>${book.description}</td> --%>
+	<%-- 				<td><c:out value="${authors}" /></td> --%>
 	<!-- 			</tr> -->
 	<%-- 		</c:forEach> --%>
-
 	<!-- 	</table> -->
 
+	<c:forEach var="authors" items="author">
+		<tr>
+			<td><c:out value="${author}.Id" /></td>
+			<td><c:out value="${author}.name" /></td>
+			<td><c:out value="${author}.description" /></td>
+		</tr>
+	</c:forEach>
 </body>
 </html>

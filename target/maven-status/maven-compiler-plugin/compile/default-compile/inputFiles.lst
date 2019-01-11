@@ -1,9 +1,12 @@
 C:\Users\denitsa.pavlova\eclipse-workspace\BookStoreApplication\src\main\java\com\scalefocus\bookStore\models\Authors.java
+C:\Users\denitsa.pavlova\eclipse-workspace\BookStoreApplication\src\main\java\com\scalefocus\bookStore\services\IDatabaseService.java
+C:\Users\denitsa.pavlova\eclipse-workspace\BookStoreApplication\src\main\java\com\scalefocus\bookStore\services\impl\BooksService.java
 C:\Users\denitsa.pavlova\eclipse-workspace\BookStoreApplication\src\main\java\com\scalefocus\bookStore\controllers\GetBooks.java
-C:\Users\denitsa.pavlova\eclipse-workspace\BookStoreApplication\src\main\java\com\scalefocus\bookStore\services\BooksService.java
+C:\Users\denitsa.pavlova\eclipse-workspace\BookStoreApplication\src\main\java\com\scalefocus\bookStore\services\IBookService.java
 C:\Users\denitsa.pavlova\eclipse-workspace\BookStoreApplication\src\main\java\com\scalefocus\bookStore\daos\AuthorDao.java
-C:\Users\denitsa.pavlova\eclipse-workspace\BookStoreApplication\src\main\java\com\scalefocus\bookStore\services\AuthorService.java
+C:\Users\denitsa.pavlova\eclipse-workspace\BookStoreApplication\src\main\java\com\scalefocus\bookStore\services\impl\DatabaseService.java
+C:\Users\denitsa.pavlova\eclipse-workspace\BookStoreApplication\src\main\java\com\scalefocus\bookStore\services\impl\AuthorService.java
 C:\Users\denitsa.pavlova\eclipse-workspace\BookStoreApplication\src\main\java\com\scalefocus\bookStore\models\Books.java
 C:\Users\denitsa.pavlova\eclipse-workspace\BookStoreApplication\src\main\java\com\scalefocus\bookStore\daos\BooksDao.java
 C:\Users\denitsa.pavlova\eclipse-workspace\BookStoreApplication\src\main\java\com\scalefocus\bookStore\daos\AbstractDao.java
-C:\Users\denitsa.pavlova\eclipse-workspace\BookStoreApplication\src\main\java\com\scalefocus\bookStore\services\DatabaseService.java
+C:\Users\denitsa.pavlova\eclipse-workspace\BookStoreApplication\src\main\java\com\scalefocus\bookStore\services\IAuthorService.java
