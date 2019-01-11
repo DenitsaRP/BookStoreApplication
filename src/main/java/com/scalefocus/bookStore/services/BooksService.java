@@ -6,7 +6,6 @@ import com.scalefocus.bookStore.daos.AbstractDao;
 import com.scalefocus.bookStore.daos.BooksDao;
 import com.scalefocus.bookStore.models.Books;
 
-// TODO
 public class BooksService {
 
 	public List<Books> getAllBooksInBookStore() throws Exception {

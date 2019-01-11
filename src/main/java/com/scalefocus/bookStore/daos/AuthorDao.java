@@ -2,15 +2,16 @@ package com.scalefocus.bookStore.daos;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
-import com.scalefocus.bookStore.models.Author;
+import com.scalefocus.bookStore.models.Authors;
 
 public class AuthorDao extends AbstractDao {
 
-	// TODO default constructor for obtaining connection when Dao is created
-	public Author getAuthor(Integer id) {
+	public Authors getAuthor(Integer id) {
 
-		final Author author = new Author();
+		final Authors author = new Authors();
 
 		try {
 
@@ -38,5 +39,26 @@ public class AuthorDao extends AbstractDao {
 			authorName = resultSet.getString("name");
 		}
 		return authorName;
+	}
+
+	public List<Authors> getAllAuthors() {
+		final List<Authors> authors = new ArrayList<Authors>();
+
+		try {
+			final Connection connection = getDatabaseConnection();
+			final ResultSet resultSet = connection.createStatement().executeQuery("select * from author");
+			while (resultSet.next()) {
+				final Authors author = new Authors();
+				author.setId(resultSet.getInt("Id"));
+				author.setName(resultSet.getString("name"));
+				author.setDescription(resultSet.getString("description"));
+				authors.add(author);
+
+			}
+		} catch (final Exception e) {
+
+			e.printStackTrace();
+		}
+		return authors;
 	}
 }

@@ -63,10 +63,4 @@ public class BooksDao extends AbstractDao {
 		return authorDao;
 	}
 
-	public void printAllBookData(List<Books> books) {
-		// System.out.println(books.stream().map(e ->
-		// e.toString()).collect(Collectors.toList()));
-		final List<Books> bookList = new ArrayList<Books>(books);
-		bookList.forEach((Books b) -> System.out.print(b));
-	}
 }

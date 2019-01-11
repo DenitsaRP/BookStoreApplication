@@ -1,3 +1,6 @@
+<%@page import="com.scalefocus.bookStore.models.Authors"%>
+<%@page import="com.scalefocus.bookStore.services.AuthorService"%>
+<%@page import="java.io.IOException"%>
 <%@page import="java.util.List"%>
 <%@page import="com.scalefocus.bookStore.services.BooksService"%>
 <%@page import="com.scalefocus.bookStore.models.Books"%>
@@ -12,21 +15,36 @@
 <body>
 	<%
 		Books book = (Books) request.getAttribute("Books");
-		out.println(book);
+		out.println(book + "</br>");
+
 		BooksService booksService = new BooksService();
-		out.println(booksService.getAllBooksInBookStore());
+		List<Books> books = booksService.getAllBooksInBookStore();
+		for (Books bookInList : books) {
+			out.println(bookInList + "</br>");
+		}
+
+		AuthorService authorService = new AuthorService();
+		List<Authors> authors = authorService.getAuthorsInBookstore();
+		for (Authors authorsInBookstore : authors) {
+			out.println(authorsInBookstore + "</br>");
+		}
 	%>
-	<!-- 	<br> -->
-	<%-- 	<% --%>
-	<!-- // 		TODO Call service here  -->
-	<!-- // 		BooksService booksService = new BooksService(); -->
-	<!-- // 		for (Books b : booksService.getAllBooksInBookStore()) { -->
-	<%-- 	%> --%>
-	<!-- 	<p> -->
-	<%-- 		<%=b%></p> --%>
-	<%-- 	<% --%>
-	// }
-	<%-- 	%> --%>
+	<!-- 	<table> -->
+	<!-- 		<tr> -->
+	<!-- 			<th>Books</th> -->
+	<!-- 		</tr> -->
+
+	<%-- 		<c:forEach items="${books}" var="book"> --%>
+	<!-- 			<tr> -->
+	<%-- 				<td>${book.id}</td> --%>
+	<%-- 				<td>${book.name}</td> --%>
+	<%-- 				<td>${book.authorId}</td> --%>
+	<%-- 				<td>${book.authorName}</td> --%>
+	<%-- 				<td>${book.description}</td> --%>
+	<!-- 			</tr> -->
+	<%-- 		</c:forEach> --%>
+
+	<!-- 	</table> -->
 
 </body>
 </html>

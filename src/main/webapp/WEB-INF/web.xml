@@ -9,11 +9,13 @@
   	<display-name>GetBooks</display-name>
   	<description></description>
   	<servlet-class>com.scalefocus.bookStore.controllers.GetBooks</servlet-class>
+  	
   </servlet>
   <servlet-mapping>
   	<servlet-name>GetBooks</servlet-name>
   	<url-pattern>/getBook</url-pattern>
   </servlet-mapping>
+  
     <resource-ref>
       <description>DB Connection</description>
       <res-ref-name>jdbc/bookstore</res-ref-name>
