@@ -15,10 +15,9 @@ public class GetBooks extends HttpServlet {
 
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		final int id = Integer.parseInt(request.getParameter("id"));
 		final IBookService booksService = new BooksService();
 		try {
-			request.setAttribute("Books", booksService.getBookById(id));
+			request.setAttribute("Books", booksService.getAllBooksInBookStore());
 		} catch (final Exception e) {
 			throw new ServletException("Book not FOUND!");
 		}

@@ -13,38 +13,68 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>BookStoreApplication</title>
+<style>
+tr:nth-child(even) {
+	background-color: #B0E0E6;
+}
+
+th {
+	background-color: #87CEEB;
+	color: black;
+}
+</style>
 </head>
 <body>
 	<%
-		Books book = (Books) request.getAttribute("Books");
-		out.println(book + "</br>");
+		// 		Books book = (Books) request.getAttribute("Books");
+		// 		out.println(book + "</br>");
 
 		IBookService booksService = new BooksService();
 		List<Books> books = booksService.getAllBooksInBookStore();
-		for (Books bookInList : books) {
-			out.println(bookInList + "</br>");
-		}
 
 		IAuthorService authorService = new AuthorService();
 		List<Authors> authors = authorService.getAuthorsInBookstore();
-		for (Authors authorsInBookstore : authors) {
-			out.println(authorsInBookstore + "</br>");
-		}
 	%>
-	<!-- 	<table> -->
-	<%-- 		<c:forEach items="${authors}" var="author"> --%>
-	<!-- 			<tr> -->
-	<%-- 				<td><c:out value="${authors}" /></td> --%>
-	<!-- 			</tr> -->
-	<%-- 		</c:forEach> --%>
-	<!-- 	</table> -->
-
-	<c:forEach var="authors" items="author">
+	<table width="100%" border="1">
 		<tr>
-			<td><c:out value="${author}.Id" /></td>
-			<td><c:out value="${author}.name" /></td>
-			<td><c:out value="${author}.description" /></td>
+			<th>Id</th>
+			<th>Name</th>
+			<th>AuthorId</th>
+			<th>Author Name</th>
+			<th>Description</th>
 		</tr>
-	</c:forEach>
+		<%
+			for (Books bookInList : books) {
+		%>
+		<tr>
+			<td align="center"><%=bookInList.getId()%></td>
+			<td align="center"><%=bookInList.getName()%></td>
+			<td align="center"><%=bookInList.getAuthorId()%></td>
+			<td align="center"><%=bookInList.getAuthorName()%></td>
+			<td align="left"><%=bookInList.getDescription()%></td>
+		</tr>
+		<%
+			}
+		%>
+	</table>
+	</br>
+	<table width="100%" border="1">
+		<tr>
+			<th>Id</th>
+			<th>Name</th>
+			<th>Description</th>
+		</tr>
+		<%
+			for (Authors authorsInBookstore : authors) {
+		%>
+		<tr>
+			<td align="center"><%=authorsInBookstore.getId()%></td>
+			<td align="center"><%=authorsInBookstore.getName()%></td>
+			<td align="left"><%=authorsInBookstore.getDescription()%></td>
+		</tr>
+		<%
+			}
+		%>
+	</table>
 </body>
 </html>

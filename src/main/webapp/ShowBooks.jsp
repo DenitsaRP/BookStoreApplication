@@ -14,8 +14,6 @@
 <meta charset="ISO-8859-1">
 <title>BookStoreApplication</title>
 <style>
-
-
 tr:nth-child(even) {
 	background-color: #B0E0E6;
 }
@@ -41,7 +39,7 @@ th {
 		<tr>
 			<th>Id</th>
 			<th>Name</th>
-			<th>AuythorId</th>
+			<th>AuthorId</th>
 			<th>Author Name</th>
 			<th>Description</th>
 		</tr>

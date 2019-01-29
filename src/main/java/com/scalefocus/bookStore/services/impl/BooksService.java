@@ -12,15 +12,15 @@ public class BooksService implements IBookService {
 	@Override
 	public List<Books> getAllBooksInBookStore() throws Exception {
 		final BooksDao booksDao = getBooksDao();
-		return booksDao.getAllBooks();
+		return booksDao.getListOfAllBooks();
 	}
 
-	@Override
-	public Books getBookById(Integer id) throws Exception {
-		final BooksDao booksDao = getBooksDao();
-
-		return booksDao.getBookById(id);
-	}
+//	@Override
+//	public Books getBookById(Integer id) throws Exception {
+//		final BooksDao booksDao = getBooksDao();
+//
+//		return booksDao.getBookById(id);
+//	}
 
 	private BooksDao getBooksDao() {
 		BooksDao booksDao = null;

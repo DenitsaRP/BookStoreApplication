@@ -8,6 +8,6 @@ public interface IBookService {
 
 	List<Books> getAllBooksInBookStore() throws Exception;
 
-	Books getBookById(Integer id) throws Exception;
+//	Books getBookById(Integer id) throws Exception;
 
 }

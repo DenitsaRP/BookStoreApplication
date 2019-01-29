@@ -12,7 +12,7 @@ public class AuthorService implements IAuthorService {
 	@Override
 	public List<Authors> getAuthorsInBookstore() throws Exception {
 		final AuthorDao authorDao = AbstractDao.getDao(AuthorDao.class);
-		return authorDao.getAllAuthors();
+		return authorDao.getAuthorsInBookstore();
 	}
 
 }

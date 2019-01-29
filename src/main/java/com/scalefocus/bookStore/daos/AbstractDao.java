@@ -1,15 +1,15 @@
 package com.scalefocus.bookStore.daos;
 
-import java.sql.Connection;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.scalefocus.bookStore.services.impl.DatabaseService;
 
 public abstract class AbstractDao {
 
-	private static Connection connection;
+	private static JdbcTemplate jdbcTemplate;
 	static {
 		try {
-			connection = DatabaseService.getDatabaseConnection();
+			jdbcTemplate = DatabaseService.getInstance().getJdbcTemplate();
 		} catch (final Exception e) {
 			e.printStackTrace();
 		}
@@ -25,7 +25,7 @@ public abstract class AbstractDao {
 		throw new Exception("Dao Not found!");
 	}
 
-	public static Connection getDatabaseConnection() {
-		return connection;
-	}
+//	public static JdbcTemplate getJdbcTemplate() {
+//		return jdbcTemplate;
+//	}
 }
