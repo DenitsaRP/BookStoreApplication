@@ -1,7 +1,7 @@
-<%@page import="com.scalefocus.bookStore.services.IAuthorService"%>
-<%@page import="com.scalefocus.bookStore.services.impl.AuthorService"%>
-<%@page import="com.scalefocus.bookStore.services.impl.BooksService"%>
-<%@page import="com.scalefocus.bookStore.services.IBookService"%>
+<%@page import="com.scalefocus.bookStore.services.impl.AuthorsClient"%>
+<%@page import="com.scalefocus.bookStore.services.impl.BookService"%>
+<%@page import="com.scalefocus.bookStore.services.IAuthorsService"%>
+<%@page import="com.scalefocus.bookStore.services.IBooksService"%>
 <%@page import="com.scalefocus.bookStore.models.Authors"%>
 <%@page import="java.io.IOException"%>
 <%@page import="java.util.List"%>
@@ -26,16 +26,13 @@ th {
 </head>
 <body>
 	<%
-		// 		Books book = (Books) request.getAttribute("Books");
-		// 		out.println(book + "</br>");
+		IBooksService booksService = new BookService();
+		List<Books> books = booksService.getAllBooksInBookstore();
 
-		IBookService booksService = new BooksService();
-		List<Books> books = booksService.getAllBooksInBookStore();
-
-		IAuthorService authorService = new AuthorService();
-		List<Authors> authors = authorService.getAuthorsInBookstore();
+ 		IAuthorsService authorService = new AuthorsClient();
+  		List<Authors> authors = authorService.getAuthorsInBookstore();
 	%>
-	<table width="100%" border="1">
+ 	<table width="100%" border="1">
 		<tr>
 			<th>Id</th>
 			<th>Name</th>
@@ -57,24 +54,24 @@ th {
 			}
 		%>
 	</table>
-	</br>
-	<table width="100%" border="1">
-		<tr>
-			<th>Id</th>
-			<th>Name</th>
-			<th>Description</th>
-		</tr>
-		<%
+	</br> 
+ 	<table width="100%" border="1"> 
+ 		<tr> 
+ 			<th>Id</th> 
+ 			<th>Name</th> 
+ 			<th>Description</th> 
+ 		</tr> 
+		<% 
 			for (Authors authorsInBookstore : authors) {
-		%>
-		<tr>
-			<td align="center"><%=authorsInBookstore.getId()%></td>
-			<td align="center"><%=authorsInBookstore.getName()%></td>
-			<td align="left"><%=authorsInBookstore.getDescription()%></td>
-		</tr>
+ 		%> 
+ 		<tr>
+			<td align="center"><%=authorsInBookstore.getId()%></td> 
+ 			<td align="center"><%=authorsInBookstore.getName()%></td> 
+ 			<td align="left"><%=authorsInBookstore.getDescription()%></td> 
+ 		</tr> 
 		<%
-			}
-		%>
+ 			}
+ 		%> 
 	</table>
 </body>
 </html>

@@ -1,19 +1,15 @@
 package com.scalefocus.bookStore.daos;
 
-import org.springframework.jdbc.core.JdbcTemplate;
-
-import com.scalefocus.bookStore.services.impl.DatabaseService;
-
 public abstract class AbstractDao {
 
-	private static JdbcTemplate jdbcTemplate;
-	static {
-		try {
-			jdbcTemplate = DatabaseService.getInstance().getJdbcTemplate();
-		} catch (final Exception e) {
-			e.printStackTrace();
-		}
-	}
+//	private static JdbcTemplate jdbcTemplate;
+//	static {
+//		try {
+//			jdbcTemplate = DatabaseService.getInstance().getJdbcTemplate();
+//		} catch (final Exception e) {
+//			e.printStackTrace();
+//		}
+//	}
 
 	public static <T> T getDao(Class<?> clazz) throws Exception {
 		if (AuthorDao.class.equals(clazz)) {
